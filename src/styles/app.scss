@@ -1,0 +1,132 @@
+@import './variables.scss';
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'node_modules/bootstrap-vue/src/index.scss';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: $fontFamily, Roboto;
+  font-size: 14px;
+  color: #fff;
+}
+
+.DN {
+  display: none;
+}
+
+.v-align {
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+}
+
+input {
+  outline: none;
+  border: none;
+}
+
+.multi-select {
+  color: #000;
+  min-height: 30px !important;
+
+  .multiselect__placeholder {
+    height: 30px;
+    margin-bottom: 0;
+    padding: 0;
+    line-height: 30px;
+  }
+
+  .multiselect__tags {
+    height: 30px;
+    min-height: auto;
+    padding: 0px;
+    border: none;
+  }
+
+
+  .multiselect__input,
+  .multiselect__single {
+    padding: 0;
+  }
+
+  .multiselect__input {
+    font-size: 14px;
+  }
+
+  input.multiselect__input {
+    color: $textColor;
+    height: 30px;
+    margin: 0;
+  }
+
+  .multiselect__single {
+    height: 30px;
+    line-height: 30px;
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .multiselect__option--highlight,
+  .multiselect__option--highlight:after {
+    background-color: $fourth;
+  }
+
+  .multiselect__content-wrapper {
+    border: none;
+  }
+}
+
+.date-picker {
+  box-shadow: none;
+  border: none;
+  height: 30px;
+  font-family: $fontFamily;
+  color: $textColor;
+  width: 100%;
+}
+
+.date-picker-parent {
+  width: 100% !important;
+
+  .mx-calendar,
+  .mx-datepicker {
+    font-family: $fontFamily !important;
+  }
+
+  .mx-calendar-content .cell.actived {
+    background-color: $fourth;
+    color: #fff;
+  }
+
+  .mx-panel-date td.today {
+    color: $fourth;
+  }
+
+  // .mx-calendar-content .cell.inrange {
+  //   background-color: $third;
+  // }
+
+  // .disabled {
+  //   background-color: #f3f3f3 !important;
+  // }
+}
+
+
+
+input::placeholder,
+textarea::placeholder {
+  color: #adadad;
+  font-size: 14px;
+}
+
+input:focus,
+textarea:focus {
+  box-shadow: none !important;
+}
+
+.DB {
+  display: block;
+}
