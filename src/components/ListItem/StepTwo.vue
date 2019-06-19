@@ -29,7 +29,7 @@
       </b-form-group>
     </div>
     <div>
-      <AppButton text="Next" class="navButton" @click="next"/>
+      <AppButton ref="btnApp" text="Next" class="navButton" @click="next"/>
     </div>
   </div>
 </template>
@@ -67,31 +67,36 @@ export default {
   },
   methods: {
     async multiSelected(obj) {
-      this.categoriesData[obj.idx].selected = obj.option;
-      this.categoriesData[obj.idx].error = "";
-      if (obj.name == "category") {
-        let subCats = await this.$apollo.query({
-          query: getSubCategories,
-          variables: {
-            id: obj.option.id
+      // console.log("In Multi Select", JSON.stringify(obj));
+      try {
+        this.categoriesData[obj.idx].selected = obj.option;
+        this.categoriesData[obj.idx].error = "";
+        if (obj.name == "category") {
+          let subCats = await this.$apollo.query({
+            query: getSubCategories,
+            variables: {
+              id: obj.option.id
+            }
+          });
+          subCats = subCats.data.subCategories;
+          if (this.categoriesData.length == 2) {
+            this.categoriesData.splice(1, 1);
           }
-        });
-        subCats = subCats.data.subCategories;
-        if (this.categoriesData.length == 2) {
-          this.categoriesData.splice(1, 1);
+          if (subCats.length !== 0) {
+            let next = {
+              name: "subCategory",
+              placeholder: "Sub Category",
+              selected: null,
+              error: "",
+              id: +new Date()
+            };
+            next.options = subCats;
+            this.categoriesData.push(next);
+          }
+        } else {
         }
-        if (subCats.length !== 0) {
-          let next = {
-            name: "subCategory",
-            placeholder: "Sub Category",
-            selected: null,
-            error: "",
-            id: +new Date()
-          };
-          next.options = subCats;
-          this.categoriesData.push(next);
-        }
-      } else {
+      } catch (ex) {
+        console.log(ex);
       }
     },
     validateFields() {

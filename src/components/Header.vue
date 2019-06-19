@@ -328,12 +328,16 @@ a {
     padding-left: 1em;
   }
 }
-@media (max-width: 540px) {
+@media (max-width: 576px) {
   /* .navbar {
     width: 80%;
   } */
   .navbar {
-    padding: 7px;
+    padding: 7px 0;
+
+    .container {
+      width: 80%;
+    }
   }
   .nav-item {
     padding-top: 8px;

@@ -5,7 +5,7 @@
       <div class="v-align">
         <h1>Rent. Borrow. Stuff.</h1>
         <div class="browse-filter">
-          <div class="browse-item">
+          <div class="browse-item P10">
             <input
               type="text"
               v-model="itemType"
@@ -16,7 +16,7 @@
           <div class="browse-item">
             <multi-select
               v-model="selectedOptions"
-              :options="options"
+              :options="cities"
               placeholder="Location"
               label="name"
               track-by="name"
@@ -65,6 +65,7 @@ import MultiSelect from "vue-multiselect";
 import DatePicker from "vue2-datepicker";
 import Header from "@/components/Header.vue";
 import AppButton from "@/components/AppButton.vue";
+import { getCities } from "@/queries/list-item";
 
 export default {
   name: "CoverPage",
@@ -78,19 +79,13 @@ export default {
     return {
       itemType: "",
       searchText: "",
-      options: [
-        { name: "Vue.js", language: "JavaScript" },
-        { name: "Rails", language: "Ruby" },
-        { name: "Sinatra", language: "Ruby" },
-        { name: "Laravel", language: "PHP" },
-        { name: "Phoenix", language: "Elixir" }
-      ],
       selectedOptions: [],
       daterange: [this.getTomorrow(1), this.getTomorrow(2)],
       popupStyle: {
         top: "initial",
         left: ""
-      }
+      },
+      cities: []
     };
   },
   methods: {
@@ -107,6 +102,9 @@ export default {
       // this.options = [];
       // this.selectedOptions = [];
     }
+  },
+  apollo: {
+    cities: getCities
   }
 };
 </script>
@@ -165,7 +163,7 @@ export default {
       display: inline-block;
       height: 30px;
       margin-top: 15px;
-      padding: 0 10px;
+      // padding: 0 10px;
       border-right: 1px solid #808080cf;
       vertical-align: top;
 
@@ -187,6 +185,42 @@ export default {
       margin-left: 15px;
       height: 40px;
       margin-top: 10px;
+    }
+  }
+
+  .P10 {
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .cover-page {
+    .browse-filter {
+      height: auto;
+      background: none;
+
+      .browse-item {
+        width: 100%;
+        margin-bottom: 20px;
+        display: block;
+        background: #fff;
+        border-radius: 5px;
+        height: 40px;
+      }
+
+      .browse-btn {
+        margin-left: 0;
+        margin-top: 0;
+        width: 100%;
+
+        .app-button {
+          width: 100%;
+        }
+      }
+    }
+
+    &:after {
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
     }
   }
 }

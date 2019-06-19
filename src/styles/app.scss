@@ -33,7 +33,7 @@ input {
   min-height: 30px !important;
 
   .multiselect__placeholder {
-    height: 30px;
+    height: 100%;
     margin-bottom: 0;
     padding: 0;
     line-height: 30px;
@@ -44,6 +44,7 @@ input {
     min-height: auto;
     padding: 0px;
     border: none;
+    padding: 0 10px;
   }
 
 
@@ -58,12 +59,12 @@ input {
 
   input.multiselect__input {
     color: $textColor;
-    height: 30px;
+    height: 100%;
     margin: 0;
   }
 
   .multiselect__single {
-    height: 30px;
+    height: 100%;
     line-height: 30px;
     margin: 0;
     font-size: 14px;
@@ -90,6 +91,10 @@ input {
 
 .date-picker-parent {
   width: 100% !important;
+
+  .mx-input-wrapper {
+    padding: 0 10px;
+  }
 
   .mx-calendar,
   .mx-datepicker {
@@ -129,4 +134,43 @@ textarea:focus {
 
 .DB {
   display: block;
+}
+
+@media (max-width:576px) {
+  .multi-select {
+    min-height: 40px !important;
+
+    .multiselect__tags {
+      height: 40px;
+    }
+
+    .multiselect__placeholder,
+    .multiselect__single {
+      line-height: 40px;
+    }
+  }
+
+  .date-picker {
+    height: 40px;
+  }
+
+  .mx-datepicker-popup {
+    width: 100%;
+
+    .mx-shortcuts-wrapper {
+      display: none;
+    }
+
+    .mx-range-wrapper {
+      max-width: 100%;
+
+      .mx-calendar {
+        float: none;
+
+        .mx-calendar-content {
+          width: auto;
+        }
+      }
+    }
+  }
 }

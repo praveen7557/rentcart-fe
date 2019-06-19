@@ -2,10 +2,7 @@
   <div class="list-item-container">
     <Steps class="steps-list" :no-of-steps="4" :active-step="activeStep"/>
     <div class="steps-container">
-      <StepOne @stepClick="stepClick" v-if="activeStep==1"/>
-      <StepTwo @stepClick="stepClick" v-if="activeStep==2"/>
-      <StepThree @stepClick="stepClick" v-if="activeStep==3"/>
-      <StepFour @stepClick="stepClick" v-if="activeStep==4"/>
+      <component :is="currentComponent" @stepClick="stepClick"/>
     </div>
   </div>
 </template>
@@ -28,6 +25,22 @@ export default {
     StepFour
   },
   computed: {
+    currentComponent() {
+      switch (this.activeStep) {
+        case 1:
+          return StepOne;
+          break;
+        case 2:
+          return StepTwo;
+          break;
+        case 3:
+          return StepThree;
+          break;
+        case 4:
+          return StepFour;
+          break;
+      }
+    },
     ...mapState("listing", ["stepData"])
   },
   data() {
@@ -45,7 +58,7 @@ export default {
 
 <style lang="scss">
 .list-item-container {
-  padding: 30px 15%;
+  padding: 50px 15%;
 }
 .steps-container {
   padding: 25px 0px;

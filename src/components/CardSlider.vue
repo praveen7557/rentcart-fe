@@ -4,8 +4,13 @@
     <div class="card-container">
       <!-- <div class="card-container-slider" :style="{width:`${sliderWidth}px`,left:0}"> -->
       <button class="left slide-button" v-if="leftShow" @click="scrollSlider('left')"></button>
-      <ul class="card-container-slider" :ref="identifier" @scroll="scrollByMouse">
-        <AppCard v-for="item in typeData" :card-data="item" :key="item.id"/>
+      <ul class="card-container-slider" ref="slider" @scroll="scrollByMouse">
+        <AppCard
+          v-for="(item,idx) in typeData"
+          :card-data="item"
+          :key="item.id"
+          :class="lastChildClass(idx)"
+        />
       </ul>
       <button class="right slide-button" @click="scrollSlider('right')" v-if="rightShow"></button>
       <!-- </div> -->
@@ -34,7 +39,7 @@ export default {
   },
   computed: {
     sliderWidth() {
-      return this.typeData.length * 320;
+      return this.typeData.length * 320 - 20;
     },
     selector() {
       return this.$refs[this.identifier];
@@ -46,7 +51,12 @@ export default {
       return false;
     },
     rightShow() {
-      if (this.scrollAmount + this.selectorWidth != this.sliderWidth) {
+      let container = this.$refs.slider;
+      let containerWidth = container ? container.clientWidth : 1366;
+      if (
+        containerWidth < this.sliderWidth &&
+        this.scrollAmount + this.selectorWidth != this.sliderWidth
+      ) {
         return true;
       }
     }
@@ -78,6 +88,9 @@ export default {
     scrollByMouse() {
       this.selectorWidth = this.selector.offsetWidth;
       this.scrollAmount = this.selector.scrollLeft;
+    },
+    lastChildClass(idx) {
+      return idx == this.typeData.length - 1 ? "last-item" : "";
     }
   },
   data() {
@@ -95,14 +108,13 @@ export default {
 .card-slider {
   color: $textColor;
   width: 80%;
-  margin: 0 auto;
-  margin-top: 30px;
+  margin: 30px auto;
   .cards-type {
     margin-bottom: 20px;
   }
   .card-container {
     position: relative;
-    height: 266px;
+    height: 200px;
     overflow: hidden;
   }
   .card-container-slider {

@@ -113,7 +113,8 @@ export default {
             name: data.StepOne.itemName,
             images: data.StepOne.images,
             category:
-              data.StepTwo.categories.length == 1
+              data.StepTwo.categories.length == 1 ||
+              data.StepTwo.categories[1].selected == null
                 ? data.StepTwo.categories[0].selected.id
                 : data.StepTwo.categories[1].selected.id,
             description: data.StepTwo.description,
@@ -127,6 +128,7 @@ export default {
             mutation: createItem,
             variables
           });
+          this.$router.push("/");
         }
       });
     },

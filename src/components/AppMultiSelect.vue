@@ -10,6 +10,7 @@
       :allow-empty="false"
       @select="onSelect"
       v-model="value"
+      ref="multiSelect"
     >
       <span slot="noResult">Sorry, No results found</span>
       <span slot="noOptions">Please enter the name</span>
