@@ -16,7 +16,12 @@ export default new Router({
     {
       path: '/list-item',
       name: 'list-item',
-      component: () => import(/* webpackChunkName: "about" */ './views/ListItem.vue')
+      component: () => import('./views/ListItem.vue')
+    },
+    {
+      path: '/rent/:name',
+      name: 'rent-item',
+      component: () => import('./views/RentItem.vue')
     }
   ]
 })

@@ -63,4 +63,13 @@ export default {
 .steps-container {
   padding: 25px 0px;
 }
+
+@media (max-width: 576px) {
+  .list-item-container {
+    padding: 50px 10%;
+  }
+  .details-container {
+    width: 300px;
+  }
+}
 </style>

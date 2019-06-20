@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 export const getItems = gql`
-query {
+query getItems{
   items {
     id,
     name,

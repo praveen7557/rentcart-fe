@@ -1,13 +1,15 @@
 <template>
   <li class="app-card-li">
-    <div class="app-card">
-      <img class="card-image" :src="cardData.images[0]" :alt="cardData.title">
-      <div class="card-details">
-        <h6 class="card-title">{{cardData.name}}</h6>
-        <div class="card-price">&#8377; {{cardData.price}} / day,</div>
-        <div class="card-location">{{cardData.city.name}}</div>
+    <router-link :to="route">
+      <div class="app-card">
+        <img class="card-image" :src="cardData.images[0]" :alt="cardData.name">
+        <div class="card-details">
+          <h6 class="card-title">{{cardData.name}}</h6>
+          <div class="card-price">&#8377; {{cardData.price}} / day,</div>
+          <div class="card-location">{{cardData.city.name}}</div>
+        </div>
       </div>
-    </div>
+    </router-link>
   </li>
 </template>
 
@@ -17,6 +19,14 @@ export default {
   props: {
     cardData: {
       type: Object
+    }
+  },
+  computed: {
+    route() {
+      return `/rent/${this.cardData.name
+        .replace(/\s+/g, "-")
+        .toLowerCase()
+        .trim()}--rent--${this.cardData.id}`;
     }
   }
 };

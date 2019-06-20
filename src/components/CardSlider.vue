@@ -42,7 +42,7 @@ export default {
       return this.typeData.length * 320 - 20;
     },
     selector() {
-      return this.$refs[this.identifier];
+      return this.$refs["slider"];
     },
     leftShow() {
       if (this.activeLength || this.scrollAmount) {

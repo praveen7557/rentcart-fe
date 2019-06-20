@@ -26,7 +26,7 @@
       </b-form-group>
     </div>
     <div>
-      <app-button text="Save" class="navButton" @click="save"/>
+      <app-button text="Save" class="navButton" @click="save" :loading="loading"/>
     </div>
   </div>
 </template>
@@ -59,7 +59,8 @@ export default {
           error: ""
         }
       ],
-      address: ""
+      address: "",
+      loading: false
     };
   },
   methods: {
@@ -124,10 +125,12 @@ export default {
             area: data.StepFour.cities[1].selected.id,
             address: data.StepFour.address
           };
+          this.loading = true;
           await this.$apollo.mutate({
             mutation: createItem,
             variables
           });
+          this.loading = false;
           this.$router.push("/");
         }
       });

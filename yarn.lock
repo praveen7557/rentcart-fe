@@ -10636,6 +10636,11 @@ vue-cli-plugin-apollo@^0.20.0:
     subscriptions-transport-ws "^0.9.16"
     ts-node "^8.0.3"
 
+vue-easy-slider@^5.2.10:
+  version "5.2.10"
+  resolved "https://registry.yarnpkg.com/vue-easy-slider/-/vue-easy-slider-5.2.10.tgz#29b9d35f482b2a42a2bcc6341240e70f6ed452d8"
+  integrity sha512-pw0eTi7dwk7nfrRclYI3lN+T2FCXNIkCiPggTfBujtMOYKb6xFb8lbiVCKXyrDTkFaTvmxBX7sk0/ArQZNwXRw==
+
 vue-eslint-parser@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-2.0.3.tgz#c268c96c6d94cfe3d938a5f7593959b0ca3360d1"
