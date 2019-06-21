@@ -13,6 +13,7 @@ Vue.use(VeeValidate);
 
 import '@/components'
 import { createProvider } from './vue-apollo'
+import './registerServiceWorker'
 
 
 new Vue({

@@ -33,6 +33,9 @@ export default {
   outline: none;
   color: white;
   cursor: pointer;
+  border: none;
+  -webkit-appearance: none;
+
   &.loading {
     background-image: url("../assets/loader.svg");
     height: 45px;
