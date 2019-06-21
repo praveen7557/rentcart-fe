@@ -29,7 +29,7 @@
                 ></date-picker>
               </div>
               <span class="date-separator"></span>
-              <div class="date-type" @click="dateClick('end')">
+              <div class="date-type end" @click="dateClick('end')">
                 <div>{{endText}}</div>
                 <date-picker
                   format="YYYY-MM-DD"
@@ -215,6 +215,16 @@ export default {
             .date-select-container {
               width: 100%;
             }
+          }
+        }
+
+        .mx-datepicker-popup {
+          width: initial;
+        }
+
+        .date-type.end {
+          .mx-datepicker-popup {
+            left: -100px !important;
           }
         }
       }
