@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "xyz.appmaker.caxlsc",
+    "sha256_cert_fingerprints": ["83:A8:C3:1A:68:5A:18:13:8A:1F:83:49:07:45:83:A8:DC:36:E9:B4:6E:98:E1:35:36:28:64:AC:F3:00:59:71"]
+  }
+}]
